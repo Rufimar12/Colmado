@@ -10,6 +10,15 @@ public class Usuario
     {
         
     }
+
+    public Usuario(int usuarioRolId, string name, string nickname, string password)
+    {
+        UsuarioRolId = usuarioRolId;
+        Name = name;
+        Nickname = nickname;
+        Password = password;
+    }
+
     public Usuario(int id, int usuarioRolId, string name, string nickname, string password)
     {
         Id = id;
