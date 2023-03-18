@@ -5,7 +5,12 @@ using Colmado.Client.Extensions;
 
 namespace Colmado.Client.Managers;
 
-public class UsuarioRolManager 
+public interface IUsuarioRolManager
+{
+    Task<ResultList<UsuarioRolRecord>> GetAsync();
+}
+
+public class UsuarioRolManager : IUsuarioRolManager
 {
     private readonly HttpClient httpClient;
 
@@ -16,12 +21,14 @@ public class UsuarioRolManager
 
     public async Task<ResultList<UsuarioRolRecord>> GetAsync()
     {
-        try{
-             var response = await httpClient.GetAsync(UsuarioRolRouteManager.BASE);
-             var resultado = await response.ToResultList<UsuarioRolRecord>();
-             return resultado;
+        try
+        {
+            var response = await httpClient.GetAsync(UsuarioRolRouteManager.BASE);
+            var resultado = await response.ToResultList<UsuarioRolRecord>();
+            return resultado;
         }
-        catch(Exception e){
+        catch (Exception e)
+        {
             return ResultList<UsuarioRolRecord>.Fail(e.Message);
         }
     }
