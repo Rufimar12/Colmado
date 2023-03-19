@@ -1,0 +1,22 @@
+@page "/rol/crear"
+@page "/rol/editar/{Id:int}"
+
+<EditForm Model="@Rol">
+    <InputText @bind-Value="Rol.Nombre"></InputText>
+    <button></button>
+
+</EditForm>
+
+
+@code
+{
+    [Parameter]
+    public int Id { get; set; } = 0;
+
+    public UsuarioRolUpdateRequest rol { get; set; } = new UsuarioRolUpdateRequest();
+    public void Send()
+    {
+        var resultado = rolesManager.CreateAsync(Rol);
+    }
+
+}
